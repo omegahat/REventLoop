@@ -1,0 +1,66 @@
+This is an experiment to see how we can handle readline with the Gtk
+event loop. We will do the same with Tcl/Tk event loop.  With this, we
+hope to be able to replace the R event loop with either of these and
+handle the same events that R does and more.
+
+We setup a handler for readline on stdin.  We also create a simple GUI
+to provide buttons for establishing idle and timeout events.  In this
+way we check all the different event sources, including of course the
+GUI events.
+
+We also want to check this on Windows.
+
+
+plot(1:10)
+dyn.load("gtkReader.so")
+invisible(.C("R_mainLoop"))
+
+library(RGtk)
+source("~/Projects/org/omegahat/R/Gtk/examples/testgtk.S")
+
+
+Now, we have to handle locator() and other things that assume they are
+the only game in town.
+
+dyn.load("gtkReader.so"); invisible(.C("R_mainLoop"))
+library(RGtk)
+source("~/Projects/org/omegahat/R/Gtk/examples/testgtk.S")
+
+.C("R_event_loop_quit")
+source("quit.S")
+
+x <- sum(1:10); sum(1:100)
+
+
+
+Merging Tcl and Gtk on the Gtk event loop.
+
+library(tcltk)
+dyn.load("gtkReader.so")
+source("tk.S")
+invisible(.C("R_mainLoop"))
+.Call("R_addTclTkToGtk")
+library(Rggobi)
+ggobi("/home/duncan/Projects/ggobi/ggobi-cvs/data/flea.xml")
+
+
+GGobi tour and the stand-alone Gtk device's locator
+
+dyn.load("gtkReader.so")
+invisible(.C("R_mainLoop"))
+library(gtkDevice)
+library(Rggobi)
+ggobi("/home/duncan/Projects/ggobi/ggobi-cvs/data/flea.xml")
+
+gtk()
+plot(rnorm(100))
+locator()
+
+
+Runnin Tcl/Tk loop with Gtk added on
+
+dyn.load("gtkReader.so")
+invisible(.C("R_tclMainLoop"))
+library(RGtk)
+.Call("R_addGtkToTclTk")
+source("~/Projects/org/omegahat/R/Gtk/examples/testgtk.S")

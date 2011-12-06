@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title></title>
+</head>
+
+<body>
+<h1></h1>
+
+To install this package, you will need to have access to some of the
+header files in R that are not installed when R is installed on the
+system. So it is easiest to install the package from a version of R
+that is not installed but run directly from the directory in which it
+was built. However, all that is necessary is to specify the location
+of the directory containing the file <code>IOStuff.h</code>. That is
+found in the <code>src/include/</code> directory of the R source tree.
+You can tell the package where this directory is in either of two
+ways.
+<dl>
+  <dt> 
+  <li> You can set the environment variable
+      <code>R_INCLUDE_DIR</code> to the name of the
+      fully qualified   src/include  directory
+  <dd>
+      This is done as
+<pre>
+ setenv R_INCLUDE_DIR <i>/wherever/R/source/is/</i>src/include
+</pre>
+for the Csh/Tcsh shells or
+<pre>
+ export R_INCLUDE_DIR=<i>/wherever/R/source/is/</i>src/include
+</pre>
+for the Bourne shell (sh/bash).
+
+  <dt>
+  <li> You specify the directory via the
+       <code>--with-R-includes</code> flag for the configuration
+      file.
+  <dd>
+<pre>
+ R CMD INSTALL --configure-args='--with-R-includes=<i>/wherever/R/source/is</i>/src/include' REventLoop
+</pre>      
+</dl>
+
+
+
+
+<hr>
+<address><a href="http://cm.bell-labs.com/stat/duncan">Duncan Temple Lang</a>
+<a href=mailto:duncan@research.bell-labs.com>&lt;duncan@research.bell-labs.com&gt;</a></address>
+<!-- hhmts start -->
+Last modified: Thu Oct 10 13:47:51 EDT 2002
+<!-- hhmts end -->
+</body> </html>

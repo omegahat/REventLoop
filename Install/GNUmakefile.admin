@@ -1,0 +1,43 @@
+createRPackage::
+
+WRITEUPS=Docs/Basics.pdf Docs/EventLoop.pdf
+
+
+include $(OMEGA_HOME)/Config/GNUmakefile.PackageConfig
+
+
+DOC_FILES=$(WRITEUPS) \
+          $(OMEGA_HOME)/Docs/OmegaTech.css $(OMEGA_HOME)/Docs/html.css 
+
+R_PACKAGE_SUBDIRS+= inst/include
+
+MAN_FILES=$(shell find man -name '*.Rd')
+
+C_SRC_FILES=$(SRC)  carbon.c
+
+LOCAL_HEADERS= Reventloop.h
+
+C_INCLUDE_FILES=$(LOCAL_HEADERS) 
+
+R_SRC_FILES= Src/main.S Src/quit.S Src/class.S Src/sleep.S Src/First.lib Src/idle.S
+
+DEPENDS=Install/configure $(C_INCLUDE_FILES) $(C_SRC_FILES)  $(RD_HELP_FILES)
+
+DEPENDS+=$(DOC_FILES) 
+
+#R_PACKAGE_FILES
+
+
+AUTOGEN= GNUmakefile README Sgenerate.py Todo.html cons.S genCode.S load.S pyGen.R 
+
+
+include $(OMEGA_HOME)/Config/GNUmakefile.PackageRules
+
+createRPackage::
+#	touch $(R_WORK_PACKAGE)/install.R
+	mv $(R_WORK_PACKAGE)/R/class.S ${R_WORK_PACKAGE}/R/aclass.S
+#	cp Install/Makevars.win $(R_WORK_PACKAGE)/src
+	cp $(LOCAL_HEADERS) $(R_WORK_PACKAGE)/inst/include
+	touch $(R_WORK_PACKAGE)/install.R 
+
+

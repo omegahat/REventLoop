@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>REventLoop package</title>
+<link rel="stylesheet" href="OmegaTech.css">
+</head>
+
+<body> <h1>The REventLoop package</h1>
+
+This is an experimental and example package that provides a mechanism
+to use an alternative event loop within R.  It allows the user to
+replace R's read-eval-print loop (REPL) with a more common event loop
+such as Gtk, Tcl/Tk,and potentially others.  This makes the GUIS more
+repsonsive and also allows us to transparently access the timers and
+idle tasks within those toolkits.  We can also run nested event loops
+to block R evaluation while still processing events and R callbacks.
+Additionally, we can switch between different event loops (e.g Gtk and
+Tk) and add one event source to the other (e.g. handle all Gtk events
+within the Tk event loop).  The package provides an implementation of
+a callback for handling input for R using readline adapted from the
+one in R so it can be used with different event loops..
+
+
+<p>
+
+Currently, the package works only on Unix.  Hopefully, in the future,
+the abstraction will be further generalized to include Windows and Mac
+OS X. The latter seems reasonably compatible.
+
+<p>
+
+The package is an example of using XML, but will be useful in its own
+right. There are several details that need to be fixed but the basic
+approach might be useful for people to build upon.
+
+<h2>Download</h2>
+<dl>
+  <dt><a href="@TAR_FILE@">@TAR_FILE@</a>
+  <dd>
+      Installation requires either or both
+      of the Gtk and Tcl/Tk libraries.
+      This is only working for Unix at present.
+</dl>
+
+
+<h2>Documentation</h2>
+<dl>
+  <dt> 
+  <li><a href="Docs/Basics.pdf">A guide to using the package</a>.
+  <dd>
+      Gives a high-level view of using the package with
+      examples and discusses some of the details in a reasonably
+      non-technical manner.
+
+  <dt>
+  <li><a href="html/struct__R__EventLoop.html">Event Loop Data Structure</a>
+  <dd> Created by doxygen.
+  <dt> 
+  <li><a href="Docs/EventLoop.pdf">Some more technical implementation/API notes</a>.
+  <dd>
+      More technical notes.
+      
+  <dt>
+  <li> <a href="man.pdf">The R manual for this package.</a>
+  <dd> The Rd files combined into a PDF file.
+  <dt>
+  <li> <a href="examples">Examples</a>
+  <dd>
+</dl>
+
+
+
+<hr>
+<address><a href="http://cm.bell-labs.com/stat/duncan">Duncan Temple Lang</a>
+<a href=mailto:duncan@research.bell-labs.com>&lt;duncan@research.bell-labs.com&gt;</a></address>
+<!-- hhmts start -->
+Last modified: Wed Oct  9 14:58:58 EDT 2002
+<!-- hhmts end -->
+</body> </html>

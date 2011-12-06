@@ -1,0 +1,14 @@
+Package: @PKG_NAME@
+Version: @MAJOR_VERSION@.@MINOR_VERSION@
+Date: @DATE@
+Title: Event loop package for R
+Author: Duncan Temple Lang (duncan@research.bell-labs.com)
+Depends: R (>= 1.6.0)
+Maintainer: Duncan Temple Lang <duncan@research.bell-labs.com>
+Description: An abstract event loop mechanism  that is toolkit 
+ independent and can be used to to replace the R event loop.
+ This allows one to use the Gtk or Tcl/Tk's event loop which 
+ gives better response and coverage of all event sources 
+ (e.g. idle events, timers, etc.)
+License: GPL
+URL: http://www.omegahat.org/REvents

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title></title>
+</head>
+
+<body>
+<h1></h1>
+
+<h2>Version 0.2-2</h2>
+<dl>
+  <dt> Added install.R to make it install correctly
+      with the S4 classes.
+  <dd>
+</dl>
+
+<h2>Version 0.2-1</h2>
+<dl>
+  <dt> Added --with-R-includes to the configuration
+       to allow those with a fully installed
+      (i.e. not working from the source) to specify where the
+      non-installed
+      R header files that are needed (e.g. IOStuff.h)
+      are located.
+  <dd>
+<pre>
+     R CMD INSTALL --configure-args='--with-R-includes=<wherever>/src/include' REventLoop
+</pre>     
+      Can also use the environment variable
+</dl>
+
+<h2>Version 0.2-0</h2>
+<dl>
+  <dt> Very early and basic start on supporting Carbon.
+  <dd>
+  <dt> Can turn off Tk, Gtk, Carbon.
+  <dd>
+</dl>
+
+
+<hr>
+<address><a href="http://cm.bell-labs.com/stat/duncan">Duncan Temple Lang</a>
+<a href=mailto:duncan@research.bell-labs.com>&lt;duncan@research.bell-labs.com&gt;</a></address>
+<!-- hhmts start -->
+Last modified: Wed Feb  5 13:12:16 EST 2003
+<!-- hhmts end -->
+</body> </html>
